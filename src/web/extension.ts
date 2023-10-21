@@ -36,7 +36,7 @@ export function activate(context: vscode.ExtensionContext) {
 	let disposable = vscode.commands.registerCommand('dos.DeployProject', async () => {
 		let tk = context.globalState.get('accessToken');
 		if (tk) {
-			const client = new SpheronClient({ tk });
+			const client = new SpheronClient({ token: tk as string });
 			let currentlyUploaded = 0;
 			let filePath = "./";
 			const { uploadId, bucketId, protocolLink, dynamicLinks } = await client.upload(
